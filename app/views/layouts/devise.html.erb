@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recrukit</title>
+
+    <!-- Main css styles -->
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+
+    <!-- Main javascript files -->
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+
+
+
+</head>
+<body class="canvas-menu">
+
+    <!-- Wrapper-->
+    <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+
+            <!-- Main view  -->
+            <%= yield %>
+
+        </div>
+        <!-- End page wrapper-->
+
+    </div>
+    <!-- End wrapper-->
+
+    <!-- Include javascript per-view -->
+    <!-- For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want -->
+    <%= yield :javascript %>
+
+</body>
+</html>
