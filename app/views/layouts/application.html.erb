@@ -24,7 +24,17 @@
 
             <!-- Page wrapper -->
             <%= render 'layouts/topnavbar' %>
-            
+            <% if flash[:notice] %>
+              <div class="alert alert-info">
+                <%= flash[:notice] %> 
+              </div>
+            <%elsif flash[:error] %>
+                <div class="alert alert-danger">
+                <%= flash[:notice] %> 
+              </div>
+            <% end %>
+                
+
             <!-- Main view  -->
             <%= yield %>
 
