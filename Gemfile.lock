@@ -55,6 +55,10 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
+    chosen-rails (1.5.2)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sass-rails (>= 3.2)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -193,6 +197,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
+  chosen-rails
   coffee-rails (~> 4.2)
   devise
   font-awesome-rails

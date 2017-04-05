@@ -33,5 +33,10 @@
           <i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span>
         <% end %>
       </li>
+      <li class="<%= 'active' if current_page?('/requirements') %>">
+        <%= link_to "/requirements" do %>
+          <i class="fa fa-university"></i> <span class="nav-label">Requirements</span>
+        <% end %>
+      </li>
   </div>
 </nav>

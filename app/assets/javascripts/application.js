@@ -22,6 +22,7 @@
 //= require underscore_min/underscore-min.js
 //= require toastr/toastr.min.js
 //= require jquery-ui.min.js
+//= require scaffold
 
 
 

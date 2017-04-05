@@ -1,0 +1,25 @@
+<%= form_for(@requirement, :url => requirements_path, method: :post) do |f| %>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">Skills</label>
+    <!-- <input name="requirement" type="number" class="form-control" value="" placeholder="Skills" required> -->
+  	<%= f.select :skills,
+  		Skill.all.map { |u| [u.name, u.name] },
+               { include_blank: true},
+               { class: 'chosen-select form-control', :multiple => true, :data => { :placeholder => ''} }
+	  %>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">Experience</label>
+    <input name="requirement[experience]" type="text" class="form-control" value="" placeholder="Experince level" required>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">City</label>
+    <input name="requirement[state]" type="text" class="form-control" value="" placeholder="city" required>
+  </div>
+
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">State</label>
+    <input name="requirement[city]" type="text" class="form-control" value="" placeholder="state" required>
+  </div>
+  <%= f.submit "Save", class: "btn btn-info" %>      
+<% end %> 

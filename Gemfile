@@ -38,7 +38,7 @@ gem 'remotipart', github: 'mshibuya/remotipart', ref: '88d9a7d'
 # gem 'capistrano-rails', group: :development
 gem 'devise'
 gem 'rails_12factor', group: :production
-
+gem 'chosen-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
