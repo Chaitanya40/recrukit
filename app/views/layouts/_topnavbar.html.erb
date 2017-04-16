@@ -6,13 +6,6 @@
         <ul class="nav navbar-top-links navbar-right">
             <% if user_signed_in? %>
                 <li>
-                    <%= link_to edit_user_registration_path do %>
-                        <i class="fa fa-pencil">
-                        Edit profile
-                        </i>
-                    <% end %>
-                </li>
-                <li>
                     <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-link" do %>
                         <i class="fa fa-sign-out">
                         Logout
@@ -20,14 +13,6 @@
                     <% end %>
                 </li>
             <% else %>
-
-                <li>
-                    <%= link_to new_user_registration_path do %>
-                        <i class="fa fa-sign-in">
-                        Sign Up
-                        </i>
-                    <% end %>
-                </li>
                 <li>
                     <%= link_to new_user_session_path do %>
                         <i class="fa fa-sign-in">

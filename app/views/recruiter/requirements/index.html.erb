@@ -1,0 +1,34 @@
+<div class="ibox">
+  <div class="ibox-title">
+    <h5 style="display:inline-box;margin-top:10px;">My requirements</h5>
+  </div>
+  <div class="ibox-content">
+  	<% if @requirements.length > 0 %>
+  		<table class="table table-striped table-bordered">
+  			<thead>
+  				<th>Id</th>
+  				<th>Skills</th>
+  				<th>Experience</th>
+  				<th>Location</th>
+  			</thead>
+  			<tbody>
+  				<% @requirements.each do |req| %>
+  					<tr>
+  						<td><%= req.id %></td>
+  						<td>
+  							<%= req.skills.join(", ")%>
+  						</td>
+  						<td>
+  							<%= req.experience %>
+  						</td>
+  						<td>
+  							<%= "#{req.city}, #{req.state}" %>
+  						</td>
+  					</tr>
+  				<% end %>
+  			</tbody>
+  		</table>
+  	<% else %>
+  	<% end %>
+  </div>
+</div>    

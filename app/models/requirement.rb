@@ -1,10 +1,5 @@
 class Requirement < ApplicationRecord
-	belongs_to :user
-	validate :check_empty
-
-	def check_empty
-		if skills.empty?
-			errors.add(:skills, :invalid)
-		end	
-	end	
+	belongs_to :manager, :class_name => 'User', :foreign_key => 'manager_id', :validate => true
+	has_many :assigned_requirements
+	has_many :recruiters, through: :assigned_requirements, :foreign_key => 'recruiter_id'
 end

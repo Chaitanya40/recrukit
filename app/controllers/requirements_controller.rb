@@ -9,8 +9,6 @@ class RequirementsController < ApplicationController
 
 	def create
 		@requirement = Requirement.new(requirement_params)
-		binding.pry
-		
 		if @requirement.save
 			flash[:notice] = "Requirement created successfully"
 			redirect_to requirements_path

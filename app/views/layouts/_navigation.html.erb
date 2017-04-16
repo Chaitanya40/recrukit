@@ -6,7 +6,7 @@
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="clear">
               <span class="block m-t-xs">
-                <strong class="font-bold">Pilcrow</strong>
+                <strong class="font-bold">Recrukit</strong>
               </span> 
               <span class="text-muted text-xs block">
                 <%= current_user.email %>
@@ -25,18 +25,32 @@
           </ul>
         </div>
         <div class="logo-element">
-          P
+          R
         </div>
       </li>
-      <li class="<%= 'active' if current_page?('/') %>">
-        <%= link_to "/" do %>
-          <i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard</span>
-        <% end %>
-      </li>
-      <li class="<%= 'active' if current_page?('/requirements') %>">
-        <%= link_to "/requirements" do %>
-          <i class="fa fa-university"></i> <span class="nav-label">Requirements</span>
-        <% end %>
-      </li>
+      <% if current_user.manager? %>
+        <li class="">
+          <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Manager</span><span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li class="">
+              <%= link_to manager_requirements_path do %>
+              <i class="fa fa-file-o"></i> <span class="nav-label">Requirements</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% elsif current_user.recruiter? %>
+        <li class="">
+          <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Recruiter</span><span class="fa arrow"></span></a>
+          <ul class="nav nav-second-level">
+            <li class="">
+              <%= link_to recruiter_requirements_path do %>
+              <i class="fa fa-file-o"></i> <span class="nav-label">Requirements</span>
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      <% end %>  
+           
   </div>
 </nav>

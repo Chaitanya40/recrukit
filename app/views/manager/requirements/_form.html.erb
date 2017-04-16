@@ -1,0 +1,33 @@
+<%= form_for(@requirement, :url => manager_requirements_path, method: :post) do |f| %>
+  <div class="form-group col-xs-12">
+    <label class="font-noraml">Title</label>
+    <input name="requirement[title]" type="text" class="form-control" value="" placeholder="Enter a title" required>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">Skills</label>
+    <!-- <input name="requirement" type="number" class="form-control" value="" placeholder="Skills" required> -->
+  	<%= f.select :skills,
+  		Skill.all.map { |u| [u.name, u.name] },
+               { include_blank: true},
+               { class: 'chosen-select form-control', :multiple => true, :data => { :placeholder => ''} }
+	  %>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">Experience</label>
+    <input name="requirement[experience]" type="text" class="form-control" value="" placeholder="Experince level" required>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">City</label>
+    <input name="requirement[state]" type="text" class="form-control" value="" placeholder="City" required>
+  </div>
+
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">State</label>
+    <input name="requirement[city]" type="text" class="form-control" value="" placeholder="State" required>
+  </div>
+  <div class="form-group col-xs-12">
+    <label class="font-noraml">Description</label>
+    <textarea name="requirement[title]" type="text" class="form-control" value="" placeholder="Enter a title" required></textarea>
+  </div>
+  <%= f.submit "Save", class: "btn btn-info btn-lg", style: "margin-left:15px" %>      
+<% end %> 

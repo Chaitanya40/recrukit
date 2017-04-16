@@ -10,27 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405190001) do
+ActiveRecord::Schema.define(version: 20170416160053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "assigned_requirements", force: :cascade do |t|
+    t.integer  "manager_id"
+    t.integer  "requirement_id"
+    t.integer  "recruiter_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "requirements", force: :cascade do |t|
-    t.integer  "skill_ids",        default: [],              array: true
-    t.integer  "user_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "skills",           default: [],              array: true
-    t.integer  "experience_level", default: 0
-    t.string   "experience"
-    t.string   "state"
+    t.string   "skills",      default: [],              array: true
     t.string   "city"
+    t.string   "state"
+    t.integer  "experience"
+    t.integer  "manager_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "title"
+    t.text     "description"
   end
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170405190001) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer  "role"
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"

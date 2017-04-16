@@ -36,3 +36,23 @@
 //= require switchery/switchery.js
 //= require chosen/chosen.jquery.js
 //= require jasny/jasny-bootstrap.min.js
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "onclick": null,
+  "showDuration": "400",
+  "hideDuration": "1000",
+  "timeOut": "7000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+
+function show_toastr(toastr_message){
+  toastr.info("", toastr_message);
+}

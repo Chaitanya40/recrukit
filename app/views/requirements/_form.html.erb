@@ -1,4 +1,9 @@
 <%= form_for(@requirement, :url => requirements_path, method: :post) do |f| %>
+  <div class="form-group col-xs-12">
+    <label class="font-noraml">Title</label>
+    <input name="requirement[title]" type="text" class="form-control" value="" placeholder="Enter a title" required>
+  </div>
+
   <div class="form-group col-xs-6">
     <label class="font-noraml">Skills</label>
     <!-- <input name="requirement" type="number" class="form-control" value="" placeholder="Skills" required> -->
@@ -20,6 +25,11 @@
   <div class="form-group col-xs-6">
     <label class="font-noraml">State</label>
     <input name="requirement[city]" type="text" class="form-control" value="" placeholder="state" required>
+  </div>
+
+  <div class="form-group col-xs-12">
+    <label class="font-noraml">Description</label>
+    <textarea name="requirement[title]" type="text" class="form-control" value="" placeholder="Enter a title" required></textarea>
   </div>
   <%= f.submit "Save", class: "btn btn-info" %>      
 <% end %> 
