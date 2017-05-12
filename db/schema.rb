@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416160053) do
+ActiveRecord::Schema.define(version: 20170503134109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,37 @@ ActiveRecord::Schema.define(version: 20170416160053) do
     t.datetime "updated_at",     null: false
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "company"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "comment_text"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "experience"
+    t.string   "city"
+    t.string   "state"
+    t.string   "resume"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "skills",     default: [],              array: true
+    t.string   "first_name"
+    t.string   "last_name"
+  end
+
   create_table "requirements", force: :cascade do |t|
     t.string   "skills",      default: [],              array: true
     t.string   "city"
@@ -33,6 +64,7 @@ ActiveRecord::Schema.define(version: 20170416160053) do
     t.datetime "updated_at",               null: false
     t.string   "title"
     t.text     "description"
+    t.integer  "status",      default: 0
   end
 
   create_table "skills", force: :cascade do |t|
@@ -40,6 +72,14 @@ ActiveRecord::Schema.define(version: 20170416160053) do
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "submissions", force: :cascade do |t|
+    t.integer  "profile_id"
+    t.integer  "recruiter_id"
+    t.integer  "requirement_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "users", force: :cascade do |t|

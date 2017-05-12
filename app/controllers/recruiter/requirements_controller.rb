@@ -27,6 +27,18 @@ class Recruiter::RequirementsController < ApplicationController
 	def update
 	end
 
+	def show
+		assigned_requirement = AssignedRequirement.where(requirement_id: params[:id], recruiter_id: current_user.id).first
+		if assigned_requirement
+			@requirement = assigned_requirement.requirement
+			@submissions = Submission.submissions_by(current_user.id, params[:id])
+			render "show"
+		else
+			flash[:error] = "You are not authorised to view that requirement"
+			redirect_to recruiter_requirements_path
+		end		
+	end	
+
 	private
 	def requirement_params
 		requirement = params[:requirement]

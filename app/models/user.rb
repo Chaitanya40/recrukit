@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :created_requirements, :foreign_key => "manager_id", :class_name => "Requirement"       
   has_many :assigned_requirements, :foreign_key => "recruiter_id"
   has_many :requirements, through: :assigned_requirements
+  has_many :submissions, :foreign_key => "recruiter_id"
   
   def manager?
   	self.role == 0

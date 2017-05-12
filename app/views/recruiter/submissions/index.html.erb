@@ -1,0 +1,21 @@
+<div class="ibox">
+  <div class="ibox-title">
+    <h5 style="display:inline-box;margin-top:10px;">My requirements</h5>
+  </div>
+  <div class="ibox-content">
+  	<table class="table table-striped ">
+  		<thead>
+  			<th>Requirement</th>
+  			<th>Profile skills</th>
+  		</thead>
+  		<tbody>
+  			<% @submissions.each do |sub|%>
+  				<tr>
+  					<td><%= sub.requirement.title %></td>
+  					<td><%= sub.profile.skills.join(",") %></td>
+  				</tr>
+  			<% end %>
+  		</tbody>
+  	</table>
+  </div>
+</div>  

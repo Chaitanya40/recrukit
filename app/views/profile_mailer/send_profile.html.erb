@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>Dear <%= @client.first_name %>,</h4>
+    <p>
+      We found a candidate as per your requirements posted with us. 
+    </p>
+    <p>Following are the requirement details</p>
+    <table style="border: 0px">
+    	<thead></thead>
+    	<tbody>
+    		<tr>
+    			<td style="border: 0px">Requirement Id</td>
+    			<td style="border: 0px"><%= @requirement.id %></td>
+    		</tr>
+
+    		<tr>
+    			<td style="border: 0px">Skills</td>
+    			<td style="border: 0px"><%= @requirement.skills.join(", ")%></td>
+    		</tr>
+
+    		<tr>
+    			<td style="border: 0px">Experience</td>
+    			<td style="border: 0px"><%= @requirement.experience.to_s+" years"%></td>
+    		</tr>
+    	</tbody>
+    </table>
+    <p>Following are the details of the candidate</p>
+    <table style="border: 0px">
+    	<thead></thead>
+    	<tbody>
+    		<tr>
+    			<td style="border: 0px">Profile Id</td>
+    			<td style="border: 0px"><%= @profile.id %></td>
+    		</tr>
+
+    		<tr>
+    			<td style="border: 0px">First Name</td>
+    			<td style="border: 0px"><%= @profile.first_name %></td>
+    		</tr>
+
+    		<tr>
+    			<td style="border: 0px">Last Name</td>
+    			<td style="border: 0px"><%= @profile.last_name %></td>
+    		</tr>
+    	</tbody>
+    </table>
+    <br>
+    <p>A copy of the candidate's resume is attached with the email</p>
+    <h5>Regards,</h5>
+    <p>Manager,</p>
+    <p>Recrukit.com</p>
+  </body>
+</html>

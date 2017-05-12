@@ -18,5 +18,12 @@
  *= require chosen/chosen.css
  *= require datapicker/datepicker3.css
  *= require clockpicker/clockpicker.css
+ *= require manager/requirements
  */
+
+
+.modal .modal-body {
+    max-height: 560px;
+    overflow-y: auto;
+}
 

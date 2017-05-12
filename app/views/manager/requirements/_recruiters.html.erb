@@ -1,22 +1,24 @@
 <% if @recruiters.length > 0 %>
-	<table class="table table-striped table-bordered">
-		<thead>
-      <th></th>
-			<th>Name</th>
-			<th>Company</th>
-		</thead>
-		<tbody>
-			<% @recruiters.each do |rec| %>
-				<tr>
-          <td><%= check_box_tag 'rec_ids[]', rec.id -%></td>
-					<td>
-						<%= rec.email%>
-					</td>
-					<td></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+	<div class="table-responsive">
+		<table class="table table-striped table-bordered">
+			<thead>
+	      <th></th>
+				<th>Name</th>
+				<th>Company</th>
+			</thead>
+			<tbody>
+				<% @recruiters.each do |rec| %>
+					<tr>
+	          <td><%= check_box_tag 'rec_ids[]', rec.id -%></td>
+						<td>
+							<%= rec.email%>
+						</td>
+						<td></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>	
 <% else %>
 	No recruiters to show
 <% end %>

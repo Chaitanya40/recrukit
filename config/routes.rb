@@ -3,14 +3,22 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
   namespace :manager do
   	resources :requirements do 
-  	collection do
-      post :assign
-    end
-  end
+      resources :submissions, only: [:show, :edit, :udpate] do
+        collection do
+          post :send_email
+          post :add_comment
+        end
+      end
+      collection do
+        post :assign
+      end  
+    end  
   end
 
   namespace :recruiter do
-  	resources :requirements
+  	resources :requirements do
+      resources :submissions
+    end   
   end
   		
 end

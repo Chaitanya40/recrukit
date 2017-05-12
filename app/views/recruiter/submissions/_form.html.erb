@@ -1,0 +1,29 @@
+<%= form_for @profile, :url => recruiter_requirement_submissions_path, method: :post, html:{multipart: true} do |f| %>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">Skills</label>
+  	<%= f.select :skills,
+  		Skill.all.map { |u| [u.name, u.name] },
+               { include_blank: true},
+               { class: 'chosen-select form-control', :multiple => true, :data => { :placeholder => ''} }
+	  %>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">Experience</label>
+    <input name="profile[experience]" type="text" class="form-control" value="" placeholder="Experince level" required>
+  </div>
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">City</label>
+    <input name="profile[state]" type="text" class="form-control" value="" placeholder="city" required>
+  </div>
+
+  <div class="form-group col-xs-6">
+    <label class="font-noraml">State</label>
+    <input name="profile[city]" type="text" class="form-control" value="" placeholder="state" required>
+  </div>
+  <div class="form-group col-xs-12">
+    <label class="font-noraml">Attach a resume</label>
+      <input type="file" name="profile[resume]" class="form-control" required="required">
+  </div>  
+
+  <%= f.submit "Save", class: "btn btn-info" %>      
+<% end %> 

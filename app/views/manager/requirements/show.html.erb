@@ -1,0 +1,124 @@
+<div class="ibox">
+	<div class="ibox-title">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="col-xs-6 col-md-6">
+					<strong>Requirement ID: <%= @requirement.id %></strong>			
+				</div>
+
+				<div class="col-xs-6 col-md-6">
+					<%= link_to "Edit", edit_manager_requirement_path(id: @requirement.id), {class: "pull-right"} %> 
+				</div>
+			</div>
+		</div>
+	</div>	
+		
+	<div class="ibox-content">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="col-xs-12 col-md-6">
+					<h3><%= @requirement.title %></h3>
+					<br>
+					<p><%= @requirement.description %></p>
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<span>Status&nbsp;:&nbsp;</span>
+					<p class="label <%= @requirement.color_code%>">
+	          <% if @requirement.status == "fresh" %>
+	            New
+	          <% else %>
+	            <%= @requirement.status.capitalize %>
+	          <% end %>     
+	        </p>
+	        <br>
+	        <br>
+	        <span>Manager: &nbsp;&nbsp;</span>
+	        <%= @requirement.manager.email %>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="ibox-content">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="col-xs-6 col-md-6">
+					<h5>Requirement ID :</h5>
+				</div>
+				<div class="col-xs-6 col-md-6">
+					<%= @requirement.id %>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="col-xs-6 col-md-6">
+					<h5>Skills required : </h5>
+				</div>
+				<div class="col-xs-6 col-md-6">
+					<%= @requirement.skills.join(", ")%>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="col-xs-6 col-md-6">
+					<h5>Experience level : </h5>
+				</div>
+				<div class="col-xs-6 col-md-6">
+					<%= @requirement.experience %>
+				</div>
+			</div>	
+		</div>
+		
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="col-xs-6 col-md-6">
+					<h5>Location : </h5>
+				</div>
+				<div class="col-xs-6 col-md-6">
+					<%= @requirement.city + ",  " + @requirement.state %>
+				</div>
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<div class="col-md-6 col-xs-6">
+					<h5>Created at : </h5>
+				</div>
+				<div class="col-xs-6 col-xs-6">
+					<%= @requirement.created_at %>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="ibox-content">
+		<h3>Submissions</h3>
+		<br>
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<th></th>
+					<th>Submission ID</th>
+					<th>Created at</th>
+					<th>Submitted By</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+				</thead>
+				<tbody>
+					<% if @submissions.count > 0%>
+						<% @submissions.each  do |submission| %>
+							<tr>
+								<td><%= link_to "View", manager_requirement_submission_path(id: submission.id, requirement_id: submission.requirement.id) %></td>
+								<td><%= submission.id %></td>
+								<td><%= submission.created_at %></td>
+								<td><%= submission.recruiter.email %></td>
+								<td><%= submission.profile.first_name %></td>
+								<td><%= submission.profile.last_name %></td>
+							</tr>
+						<% end %>
+					<% end %>	
+				</tbody>
+			</table>
+		</div>	
+	</div>
+</div>

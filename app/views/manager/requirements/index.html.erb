@@ -1,38 +1,62 @@
 <div class="ibox">
   <div class="ibox-title">
-    <h5 style="display:inline-box;margin-top:10px;">My requirements</h5>
-      <%= link_to 'Add Requirement', new_manager_requirement_path ,method: :get, class:'btn btn-info pull-right  btn-sm'%>
-      <%= link_to "Assign", "#my-modal", :style => "margin-right:10px", :class => "btn btn-sm btn-info pull-right", "data-toggle" => "modal" %>
-
+    <div class="row">
+      <div class="col-md-12 col-xs-12">
+        <div class="col-md-7 col-xs-4">
+          <h5>My requirements</h5>    
+        </div>
+        <div class="col-md-3 col-xs-5">
+          <%= link_to 'Add requirement', new_manager_requirement_path, class:'btn btn-info btn-sm pull-right'%>
+        </div>
+        <div class="col-md-2 col-xs-2">
+          <%= link_to "Assign", "#my-modal", :class => "btn btn-sm btn-info", "data-toggle" => "modal" %>  
+        </div>
+      </div>
+      
+    </div>    
   </div>
   <div class="ibox-content">
   	<% if @requirements.length > 0 %>
-  		<table class="table table-striped table-bordered">
-  			<thead>
-          <th></th>
-  				<th>Id</th>
-  				<th>Skills</th>
-  				<th>Experience</th>
-  				<th>Location</th>
-  			</thead>
-  			<tbody>
-  				<% @requirements.each do |req| %>
-  					<tr>
-              <td><%= check_box_tag 'req_ids[]', req.id -%></td>
-  						<td><%= req.id %></td>
-  						<td>
-  							<%= req.skills.join(", ")%>
-  						</td>
-  						<td>
-  							<%= req.experience %>
-  						</td>
-  						<td>
-  							<%= "#{req.city}, #{req.state}" %>
-  						</td>
-  					</tr>
-  				<% end %>
-  			</tbody>
-  		</table>
+  		<div class="table-responsive">
+        <table class="table table-bordered table-striped">
+    			<thead>
+            <th></th>
+            <th></th>
+    				<th>Id</th>
+    				<th>Skills</th>
+    				<th>Experience</th>
+    				<th>Location</th>
+            <th>Status</th>
+    			</thead>
+    			<tbody>
+    				<% @requirements.each do |req| %>
+    					<tr>
+                <td><%= check_box_tag 'req_ids[]', req.id -%></td>
+    						<td><%=link_to "Edit", edit_manager_requirement_path(id: req.id) %></td>
+                <td><%= link_to "#{req.title}", manager_requirement_path(id: req.id) %></td>
+    						<td>
+    							<%= req.skills.join(", ")%>
+    						</td>
+    						<td>
+    							<%= req.experience.to_s+" years" %>
+    						</td>
+    						<td>
+    							<%= "#{req.city}, #{req.state}" %>
+    						</td>
+                <td>
+                  <span class="label <%= req.color_code%>">
+                    <% if req.status == "fresh" %>
+                      New
+                    <% else %>
+                      <%= req.status.capitalize %>
+                    <% end %>     
+                  </span>
+                </td>
+    					</tr>
+    				<% end %>
+    			</tbody>
+    		</table>
+      </div>
   	<% else %>
   	<% end %>
   </div>

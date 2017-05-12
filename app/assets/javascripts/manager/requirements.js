@@ -17,23 +17,28 @@ $(document).ready(function(){
     	var rec_ids = rec_inputs.map(function(){
       	return $(this).val();
     	}).get();
+
       console.log(req_ids);
       console.log(rec_ids);
+      
       $.ajax({
       	type: "POST",
       	url: "http://localhost:3000/manager/requirements/assign",
       	data: {rec_ids: rec_ids, req_ids: req_ids}, 
       	success: function(result){
       		if(result["message"] == "Success"){
-      			toastr.success("","Requirements created successfully");
+      			toastr.success("","Requirements assigned successfully");
+            $('#my-modal').modal('hide');
+            $('input:checkbox').removeAttr('checked');
       		}
       		else{
-      			toastr.error("","Error creating requirements");
+      			toastr.error("","Error assigning requirements");
       		} 
-      	}});
-			}
+      	}
+      });
+			
+      }
 	});
-
 
 
 });
