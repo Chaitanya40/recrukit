@@ -18,4 +18,11 @@ $(document).ready(function() {
   	});
 
   });
+
+  $("#add-comment").click(function(){
+    text = $("input[name=comment]").val();
+    $(".comments ol").append('<li><p>'+text+'</p></li>');
+    $("input[name=comment]").val('');
+
+  });
 });

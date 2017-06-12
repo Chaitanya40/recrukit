@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503134109) do
+ActiveRecord::Schema.define(version: 20170601163244) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,12 +23,18 @@ ActiveRecord::Schema.define(version: 20170503134109) do
     t.datetime "updated_at",     null: false
   end
 
-  create_table "clients", force: :cascade do |t|
+  create_table "client_contacts", force: :cascade do |t|
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "company"
-    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -55,16 +61,17 @@ ActiveRecord::Schema.define(version: 20170503134109) do
   end
 
   create_table "requirements", force: :cascade do |t|
-    t.string   "skills",      default: [],              array: true
+    t.string   "skills",            default: [],              array: true
     t.string   "city"
     t.string   "state"
     t.integer  "experience"
     t.integer  "manager_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "title"
     t.text     "description"
-    t.integer  "status",      default: 0
+    t.integer  "status",            default: 0
+    t.integer  "client_contact_id"
   end
 
   create_table "skills", force: :cascade do |t|

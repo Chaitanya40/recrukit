@@ -4,6 +4,7 @@ class Requirement < ApplicationRecord
 	has_many :recruiters, through: :assigned_requirements, :foreign_key => 'recruiter_id'
 	enum status: [:fresh, :assigned, :in_progress, :closed]
 	has_many :submissions
+	belongs_to :client_contact
 	def color_code
 		case self.status
 		when "fresh"

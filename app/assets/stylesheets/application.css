@@ -27,3 +27,13 @@
     overflow-y: auto;
 }
 
+body{
+	font-family: "ProximaNova"
+}
+
+
+
+.comments{
+	max-height: 100px;
+	overflow-y: scroll;
+}

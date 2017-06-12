@@ -12,7 +12,8 @@ Rails.application.routes.draw do
       collection do
         post :assign
       end  
-    end  
+    end
+    resources :clients  
   end
 
   namespace :recruiter do
